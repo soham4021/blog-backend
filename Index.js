@@ -12,6 +12,7 @@ const uploadMiddleware = multer({ dest: "uploads/" });
 require("dotenv").config();
 const fs = require("fs");
 const BASE_URL = process.env.BASE_URL;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors({ credentials: true, origin: `${BASE_URL}` }));
 app.use(express.json());
@@ -148,6 +149,6 @@ app.put("/post", uploadMiddleware.single("file"), async (req, res) => {
 	});
 });
 
-app.listen(4000, () => {
+app.listen(PORT, () => {
 	console.log("Server started");
 });
